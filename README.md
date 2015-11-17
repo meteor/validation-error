@@ -12,14 +12,18 @@ throw new ValidationError([
 ]);
 ```
 
-Typically, you'd catch the error and display each error in the list in the UI:
-
+You might catch the error returned by a method call and display it in the UI:
 ```js
-try {
-  doSomething();
-} catch (ValidationError e) {
-  _.each(e.errors, (e) => {
-    alert(`Problem with ${e.name}! ${e.error}`);
-  });
-}
+Template.foo.events({
+  'submit': (event, instance) => {
+    Meteor.call('method', (err) => {
+      // XXX: does this actually work?
+      if (err && err instanceof ValidationError) {
+        _.each(err.errors, function(error) {
+          instance.state.set(`error-${error.name}`: error.type);
+        });
+      }
+    });
+  }
+});
 ```
