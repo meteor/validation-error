@@ -14,8 +14,9 @@ throw new ValidationError([
 
 Typically, you'd catch the error and display each error in the list in the UI:
 
-```
+```js
 try {
+  doSomething();
 } catch (ValidationError e) {
   _.each(e.errors, (e) => {
     alert(`Problem with ${e.name}! ${e.error}`);
