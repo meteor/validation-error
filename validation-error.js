@@ -15,5 +15,6 @@ ValidationError = class extends Meteor.Error {
   constructor(errors) {
     check({errors}, errorsSchema);
     super('validation-error', 'Validation Failed', errors);
+    this.errors = errors;
   }
 };
