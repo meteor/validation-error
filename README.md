@@ -8,7 +8,11 @@ Typically, you'd display the information contained in the validation error marke
 
 ```js
 throw new ValidationError([
-  {name: 'field', type: 'code-that-identifies-the-error', details: {store: 'details', about: 'the-error'}}
+  {
+    name: 'field',
+    type: 'code-that-identifies-the-error',
+    details: {store: 'details', about: 'the-error'}
+  }
 ]);
 ```
 
