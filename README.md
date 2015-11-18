@@ -21,8 +21,7 @@ You might catch the error returned by a method call and display it in the UI:
 Template.foo.events({
   'submit': (event, instance) => {
     Meteor.call('method', (err) => {
-      // XXX: does this actually work?
-      if (err && err instanceof ValidationError) {
+      if (err && err.error === 'validation-error') {
         _.each(err.errors, function(error) {
           instance.state.set(`error-${error.name}`: error.type);
         });
