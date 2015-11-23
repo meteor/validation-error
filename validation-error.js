@@ -7,6 +7,7 @@ const errorSchema = new SimpleSchema({
   type: {type: String},
   details: {type: Object, blackbox: true, optional: true}
 });
+
 const errorsSchema = new SimpleSchema({
   errors: {type: [errorSchema]}
 });
@@ -14,7 +15,13 @@ const errorsSchema = new SimpleSchema({
 ValidationError = class extends Meteor.Error {
   constructor(errors) {
     check({errors}, errorsSchema);
-    super('validation-error', 'Validation Failed', errors);
+
+    super(ValidationError.ERROR_CODE, 'Validation Failed', errors);
+
     this.errors = errors;
   }
 };
+
+// If people use this to check for the error code, we can change it
+// in future versions
+ValidationError.ERROR_CODE = 'validation-error';
