@@ -1,5 +1,9 @@
 # ValidationError
 
+```
+meteor add mdg:validation-error
+```
+
 Use a validation error to indicate that a method call has failed and the client can fix it by changing specific arguments. Examples:
 
 1. An argument isn't of the right type
