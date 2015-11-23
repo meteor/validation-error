@@ -69,8 +69,8 @@ Template.foo.events({
   'submit': (event, instance) => {
     Meteor.call('method', (err) => {
       if (err && err.error === ValidationError.ERROR_CODE) {
-        _.each(err.errors, function(error) {
-          instance.state.set(`error-${error.name}`: error.type);
+        err.details.forEach((fieldError) => {
+          instance.state.set(`error-${fieldError.name}`: fieldError.type);
         });
       }
     });
