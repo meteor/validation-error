@@ -16,7 +16,7 @@ This error format is based on the error output of [`aldeed:simple-schema`](https
 
 ## API
 
-### new ValidationError(errors: Array)
+### new ValidationError(errors: Array, [message: String])
 
 `errors` must be a array with keys of the form:
 
@@ -38,6 +38,8 @@ This error format is based on the error output of [`aldeed:simple-schema`](https
   ...
 ]
 ```
+
+`message` is an optional string to use for the error message so that the text printed at the top of the stack trace when the error is thrown is more useful. For example, if you pass in the error `{name: 'name', type: 'required'}`, you may want to also pass in the message "Name is required".
 
 ### Usage example
 
