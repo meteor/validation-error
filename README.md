@@ -81,3 +81,9 @@ Template.foo.events({
 ### Works out of the box with mdg:method
 
 This type of error is automatically thrown for invalid arguments if you use the [`mdg:method`](https://github.com/meteor/method) package, where you can specify a schema for the arguments of your method.
+
+### Running tests
+
+```bash
+$ meteor test-packages --driver-package practicalmeteor:mocha ./
+```

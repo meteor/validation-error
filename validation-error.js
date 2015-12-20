@@ -13,10 +13,10 @@ const errorsSchema = new SimpleSchema({
 });
 
 ValidationError = class extends Meteor.Error {
-  constructor(errors) {
-    check({errors}, errorsSchema);
+  constructor(errors, message = 'Validation Failed') {
+    errorsSchema.validate({errors});
 
-    super(ValidationError.ERROR_CODE, 'Validation Failed', errors);
+    super(ValidationError.ERROR_CODE, message, errors);
 
     this.errors = errors;
   }

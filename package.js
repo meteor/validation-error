@@ -10,11 +10,21 @@ Package.onUse(function(api) {
 
   api.use([
     'ecmascript',
-    'aldeed:simple-schema@1.3.3',
-    'check'
+    'aldeed:simple-schema@1.5.1',
   ]);
 
   api.addFiles('validation-error.js');
 
   api.export('ValidationError');
+});
+
+Package.onTest(function (api) {
+  api.use([
+    'ecmascript',
+    'practicalmeteor:mocha@2.1.0_5',
+    'practicalmeteor:chai@2.1.0_1',
+    'mdg:validation-error',
+  ]);
+
+  api.addFiles('validation-error-tests.js');
 });
