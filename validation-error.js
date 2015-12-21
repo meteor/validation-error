@@ -9,7 +9,8 @@ const errorSchema = new SimpleSchema({
 });
 
 const errorsSchema = new SimpleSchema({
-  errors: {type: [errorSchema]}
+  errors: {type: Array},
+  'errors.$': {type: errorSchema}
 });
 
 ValidationError = class extends Meteor.Error {
