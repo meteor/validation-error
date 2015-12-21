@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
 
   api.use([
-    'ecmascript',
+    'ecmascript@0.1.5',
     'aldeed:simple-schema@1.5.1',
   ]);
 
@@ -19,9 +19,11 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function (api) {
+  api.versionsFrom('1.2.1');
+
   api.use([
-    'ecmascript',
-    'practicalmeteor:mocha@2.1.0_5',
+    'ecmascript@0.1.5',
+    'practicalmeteor:mocha@2.1.0_6',
     'practicalmeteor:chai@2.1.0_1',
     'mdg:validation-error',
   ]);
