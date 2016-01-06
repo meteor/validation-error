@@ -1,25 +1,18 @@
 /* global ValidationError:true */
-/* global SimpleSchema */
 
 // This is exactly what comes out of SS.
-const errorSchema = new SimpleSchema({
-  name: {type: String},
-  type: {type: String},
-  details: {type: Object, blackbox: true, optional: true}
-});
-
-const errorsSchema = new SimpleSchema({
-  errors: {type: Array},
-  'errors.$': {type: errorSchema}
-});
+const errorPattern = [{
+  name: String,
+  type: String,
+  details: Match.Optional(Object)
+}];
 
 ValidationError = class extends Meteor.Error {
   constructor(errors, message = 'Validation Failed') {
-    errorsSchema.validate({errors});
+    check(errors, errorPattern);
+    check(message, String);
 
     super(ValidationError.ERROR_CODE, message, errors);
-
-    this.errors = errors;
   }
 };
 

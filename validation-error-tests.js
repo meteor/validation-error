@@ -1,15 +1,8 @@
 describe('ValidationError', () => {
   it('throws a useful error when the argument is not correct', () => {
-    try {
+    assert.throws(() => {
       new ValidationError([{name: 'name'}]);
-    } catch (error) {
-      // Welcome to Bizarro World, where ValidationError constructor actually throws
-      // a ValidationError when the arguments aren't correct.
-      assert.equal(error.error, 'validation-error');
-      assert.equal(error.details, error.errors);
-      assert.equal(error.errors[0].name, 'errors.0.type');
-      assert.equal(error.errors[0].type, 'required');
-    }
+    }, /Missing key/);
   });
 
   it('allows message to be passed in', () => {

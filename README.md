@@ -87,5 +87,5 @@ This type of error is automatically thrown for invalid arguments if you use the 
 ### Running tests
 
 ```bash
-$ meteor test-packages --driver-package practicalmeteor:mocha ./
+meteor test-packages --driver-package practicalmeteor:mocha ./
 ```
