@@ -1,18 +1,14 @@
-/* global ValidationError:true */
-
-// This is exactly what comes out of SS.
-const errorPattern = [{
-  name: String,
-  type: String,
-  details: Match.Optional(Object)
-}];
-
 ValidationError = class extends Meteor.Error {
-  constructor(errors, message = 'Validation Failed') {
-    check(errors, errorPattern);
-    check(message, String);
+  constructor(errors, message = 'Validation failed') {
+    check(errors, [{
+      name: String,
+      type: String,
+      details: Match.Optional(Object)
+    }]);
 
     super(ValidationError.ERROR_CODE, message, errors);
+
+    this.errors = errors;
   }
 };
 
