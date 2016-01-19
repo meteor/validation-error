@@ -12,7 +12,7 @@ ValidationError = class extends Meteor.Error {
     check(errors, errorPattern);
     check(message, String);
 
-    super(ValidationError.ERROR_CODE, message, errors);
+    return super(ValidationError.ERROR_CODE, message, errors);
   }
 };
 
