@@ -14,6 +14,10 @@ ValidationError = class extends Meteor.Error {
 
     return super(ValidationError.ERROR_CODE, message, errors);
   }
+  
+  static isInstance(err) {
+    return err && err instanceof Meteor.Error && err.error === ValidationError.ERROR_CODE;
+  }
 };
 
 // If people use this to check for the error code, we can change it
