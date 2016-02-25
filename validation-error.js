@@ -17,9 +17,7 @@ class ValidationError extends Meteor.Error {
   // Static method checking if a given Meteor.Error is an instance of
   // ValidationError.
   static is(err) {
-    return err &&
-      err instanceof Meteor.Error &&
-      err.error === ValidationError.ERROR_CODE;
+    return err instanceof Meteor.Error && err.error === ValidationError.ERROR_CODE;
   };
 };
 
