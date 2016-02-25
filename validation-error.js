@@ -7,7 +7,7 @@ const errorsPattern = [Match.ObjectIncluding({
 })];
 
 class ValidationError extends Meteor.Error {
-  constructor(errors, message = ValidationError.DEFAULT_REASON) {
+  constructor(errors, message = ValidationError.DEFAULT_MESSAGE) {
     check(errors, errorsPattern);
     check(message, String);
 
@@ -26,4 +26,4 @@ class ValidationError extends Meteor.Error {
 // Universal validation error code to be use in applications and packages.
 ValidationError.ERROR_CODE = 'validation-error';
 // Default validation error message that can be changed globally.
-ValidationError.DEFAULT_REASON = 'Validation failed';
+ValidationError.DEFAULT_MESSAGE = 'Validation failed';
