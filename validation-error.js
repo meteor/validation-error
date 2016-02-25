@@ -7,11 +7,11 @@ const errorsPattern = [Match.ObjectIncluding({
 })];
 
 class ValidationError extends Meteor.Error {
-  constructor(errors, reason = ValidationError.DEFAULT_REASON) {
+  constructor(errors, message = ValidationError.DEFAULT_REASON) {
     check(errors, errorsPattern);
-    check(reason, String);
+    check(message, String);
 
-    return super(ValidationError.ERROR_CODE, reason, errors);
+    return super(ValidationError.ERROR_CODE, message, errors);
   }
 
   // Static method checking if a given Meteor.Error is an instance of
