@@ -1,6 +1,6 @@
 Package.describe({
   name: 'mdg:validation-error',
-  version: '0.4.0',
+  version: '0.5.0',
   summary: 'A standard validation error to be used by form/method/validation packages',
   git: 'https://github.com/meteor/validation-error'
 });
