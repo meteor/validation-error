@@ -6,7 +6,7 @@ const errorsPattern = [Match.ObjectIncluding({
   type: String
 })];
 
-class ValidationError extends Meteor.Error {
+ValidationError = class extends Meteor.Error {
   constructor(errors, message = ValidationError.DEFAULT_MESSAGE) {
     check(errors, errorsPattern);
     check(message, String);
