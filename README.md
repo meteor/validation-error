@@ -32,6 +32,8 @@ This error format is based on the error output of [`aldeed:simple-schema`](https
     // Any kind of details that depends on the type of error can be added as
     // an extra object's property (eg. `message` with a per field error message
     // or `value` that contains the invalid value passed from the client).
+    // Must be contained withing a details object, e.g.:
+    // details: { value: 'your value' }
     ...
   }
   ...
@@ -62,9 +64,11 @@ saveProduct({ name, cost, category }) {
       {
         name: 'cost',
         type: 'out-of-range',
-        value: cost,
-        min: 0,
-        max: 100
+        details: {
+          value: cost,
+          min: 0,
+          max: 100
+        }
       }
     ]);
   }
